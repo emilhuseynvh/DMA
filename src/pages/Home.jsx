@@ -28,7 +28,7 @@ const Home = () => {
             <div style={{ backgroundColor: item.color }} key={index} className={`p-6 h-56 rounded-2xl ${item.mt ? 'mt-12' : item.mb ? '-mt-12' : ''}`}>
               <div className="w-52 flex flex-col items-start justify-between h-full">
                 <div>
-                  <img src={`../../public/assets/img/${item.icon}`} alt={`icon-${index}`} />
+                  <img src={`assets/img/${item.icon}`} alt={`icon-${index}`} />
                 </div>
                 <p className='text-lg font-medium text-white leading-6'>{item.content}</p>
               </div>
