@@ -1,11 +1,33 @@
 import React, { useState } from 'react'
 import RadioOption from '../Components/RadioOption'
 import Button from '../Components/UI/Button'
+import emailjs from '@emailjs/browser';
+import { useNavigate } from 'react-router-dom';
 
 const evaluate = ['Tam razıyam', 'Razıyam', 'Orta dərəcədə razıyam', 'Qismən razıyam', 'Heç razı deyiləm']
 
 const Evaulate = () => {
+    const navigate = useNavigate();
     const [answer, setAnswer] = useState(null)
+
+
+    const handleSubmit = () => {
+        const selectedFeedback = evaluate[answer];
+        const templateParams = {
+            to_name: 'DMA User',
+            feedback: selectedFeedback,
+        };
+
+        emailjs
+            .send('service_xxtnida', 'template_czlxbyb', templateParams, 'gU7LOj6R9IaEoO34c')
+            .then(() => {
+                alert('Məlumat uğurla göndərildi!');
+            })
+            .catch((error) => {
+                console.error('Email göndərilmə xətası:', error);
+            });
+    };
+
     return (
         <div className='bg-[#F8F8F8] w-screen h-screen py-40'>
             <div>
@@ -18,10 +40,10 @@ const Evaulate = () => {
             <div className='bg-white w-[1224px] mx-auto py-9 h-[500px] rounded-2xl'>
                 <RadioOption evaluate={true} answer={answer} list={evaluate} text='Nəticənizi qiymətləndirin' setAnswer={setAnswer} />
             </div>
-            <div className='mx-auto w-[300px] mt-12'>
-                <Button send={answer !== null  && '/result'} bgcolor={answer !== null  ? '#1DDD76' :'#fff'} color={answer !== null  ? '#fff' : '#32A9FF'}>
+            <div onClick={() => answer !== null && handleSubmit()} className='mx-auto w-[300px] mt-12'>
+                <Button bgcolor={answer !== null ? '#1DDD76' : '#fff'} color={answer !== null ? '#fff' : '#32A9FF'}>
                     <p>Təsdiq et</p>
-                    {answer !== null  ? <img src="assets/img/agree.svg" alt="Icon" /> : <img src="assets/img/agree2.svg" alt="Icon" />}
+                    {answer !== null ? <img src="assets/img/agree.svg" alt="Icon" /> : <img src="assets/img/agree2.svg" alt="Icon" />}
                 </Button>
             </div>
         </div>

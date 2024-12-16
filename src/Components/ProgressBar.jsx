@@ -13,6 +13,7 @@ const ProgressBar = ({ i, color }) => {
                 {Array.from({ length: 4 }).map((_, index) => (
                 <div  key={index} style={barStyle(i > index ? true : false)}></div>
                 ))}
+                
             </div>
         </div>
     )
