@@ -7,7 +7,6 @@ import Education from "../pages/Education";
 import Experience from "../pages/Experience";
 import About from "../pages/About";
 import Result from "../pages/Result";
-import Example from "../pages/example";
 import Evaulate from "../pages/Evaulate";
 
 export const route = createBrowserRouter(
@@ -20,7 +19,6 @@ export const route = createBrowserRouter(
             <Route path="/education" element={<Education />} />
             <Route path="/experience" element={<Experience />} />
             <Route path="/result" element={<Result />} />
-            <Route path="/example" element={<Example />} />
             <Route path="/evaluate" element={<Evaulate />} />
         </Route>
     )

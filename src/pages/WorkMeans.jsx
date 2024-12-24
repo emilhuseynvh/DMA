@@ -3,11 +3,13 @@ import { FaChevronLeft, FaCompass } from 'react-icons/fa';
 import { LuFileVideo } from "react-icons/lu";
 import { Link } from 'react-router-dom';
 import Video from '../Components/Video';
+import ProgressBar from '../Components/ProgressBar';
 
 function WorkMeans() {
     const [show, setShow] = useState(false)
     return (
-        <div className='bg-[#FFFFFF]'>
+        <div className='bg-[#FFFFFF] py-20'>
+            <ProgressBar i={1} color={'#ECECEC'} />
             <div className='max-w-[1300px] mx-auto'>
                 <div className='py-20 w-full mx-auto'>
                     <div>
@@ -24,20 +26,20 @@ function WorkMeans() {
                         </div>
                         <div className="flex py-8 text-xl ">
                             <div className="flex flex-row justify-between gap-4 mt-8">
-                                <div className="relative bg-blue-500 h-[150px] text-white p-6 rounded-2xl w-full md:w-1/3 flex flex-col justify-center items-center">
-                                    <div className="absolute top-[-20px] w-12 h-12 text-white border-[2px] border-white bg-blue-500 rounded-full flex items-center justify-center font-bold text-lg">1</div>
+                                <div className="relative bg-[#5690FF]  text-white py-8 px-12 rounded-2xl w-full md:w-1/3 flex flex-col justify-center items-center">
+                                    <div className="absolute top-[-20px] w-14 h-14 text-white border-[3px] border-white bg-[#5690FF] rounded-full flex items-center justify-center font-bold text-lg">1</div>
                                     <p className="text-left">
                                         Bu kartları yerləşdirmək üçün <span className="font-bold">5 sütun</span> ayrılmışdır.
                                     </p>
                                 </div>
-                                <div className="relative bg-blue-500 h-[150px] justify-center text-white p-6 rounded-2xl w-full md:w-1/3 flex flex-col items-center">
-                                    <div className="absolute top-[-20px] w-12 h-12 text-white border-[2px] border-white bg-blue-500 rounded-full flex items-center justify-center font-bold text-lg">2</div>
+                                <div className="relative bg-[#5690FF]  justify-center text-white py-8 px-12 rounded-2xl w-full md:w-1/3 flex flex-col items-center">
+                                    <div className="absolute top-[-20px] w-14 h-14 text-white border-[3px] border-white bg-[#5690FF] rounded-full flex items-center justify-center font-bold text-lg">2</div>
                                     <p className="text-left">
                                         Hər bir sütuna cəmi <span className="font-bold">4 kart</span> yerləşdirə bilərsiniz.
                                     </p>
                                 </div>
-                                <div className="relative bg-blue-500 h-[150px] justify-center  text-white p-6 rounded-2xl w-full md:w-1/3 flex flex-col items-center">
-                                    <div className="absolute top-[-20px] w-12 h-12 text-white border-[2px] border-white bg-blue-500 rounded-full flex items-center justify-center font-bold text-lg">3</div>
+                                <div className="relative bg-[#5690FF]  justify-center  text-white py-8 px-12 rounded-2xl w-full md:w-1/3 flex flex-col items-center">
+                                    <div className="absolute top-[-20px] w-14 h-14 text-white border-[3px] border-white bg-[#5690FF] rounded-full flex items-center justify-center font-bold text-lg">3</div>
                                     <p className="text-left">
                                         Kartları diqqətlə oxuyun və onları <span className="font-bold">əhəmiyyət dərəcəsinə</span> əsasən 5 sütuna yerləşdirin.
                                     </p>

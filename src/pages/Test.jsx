@@ -30,6 +30,28 @@ const initialData = [
 ];
 
 
+const boldwords = [
+    'güclü tərəflərimdən',
+    'uğurlu olmaq',
+    'doğrularıma zidd olmayan',
+    'dəstək olacaq',
+    'hüquqlarımın qorunması',
+    'maaşımın',
+    'tanınmaq',
+    'işi öyrədəcək',
+    'məşğul olmaq',
+    'tək',
+    'müstəqil',
+    'fərqli',
+    'irəliləməyim üçün',
+    'öz idealarımı',
+    'sabit',
+    'iş şəraitinin',
+    'istiqamət',
+    'iş yoldaşlarımla',
+    'faydalı',
+    'müdaxilə olmadan'
+]
 
 const initialCarts = {
     5: { number: 5, title: 'Ən əhəmiyyətli', items: [] },
@@ -43,7 +65,7 @@ const initialCarts = {
 const Test = () => {
     const navigate = useNavigate();
     const [show, setShow] = useState(false);
-    const [fullfiled, setFullfiled] = useState([]); // State olaraq saxlanılır
+    const [fullfiled, setFullfiled] = useState([]);
     const color = '#032843';
     const [cards, setCards] = useState(() => {
         const storedData = localStorage.getItem('cards');
@@ -112,7 +134,7 @@ const Test = () => {
 
     const handleNavigate = () => {
         const check = Object.values(carts).every((cart) => cart.items.length === 4);
-    
+
         if (check) {
             setAreAllCartsFull(true);
             navigate('/education');
@@ -136,7 +158,7 @@ const Test = () => {
                             <Droppable droppableId="cards">
                                 {(provided) => (
                                     <div
-                                        className={`grid grid-cols-5 gap-x-10`}
+                                        className="grid grid-cols-5 gap-x-10"
                                         ref={provided.innerRef}
                                         {...provided.droppableProps}
                                     >
@@ -144,12 +166,41 @@ const Test = () => {
                                             <Draggable key={item.id} draggableId={item.id} index={i}>
                                                 {(provided) => (
                                                     <div
-                                                        className="bg-white rounded-lg py-2.5 px-5 mt-4"
+                                                        className="bg-white rounded-lg py-2.5 px-5 mt-3 text-center h-[70px] flex justify-center items-center"
                                                         ref={provided.innerRef}
                                                         {...provided.draggableProps}
                                                         {...provided.dragHandleProps}
                                                     >
-                                                        <p className="text-[#0257BF]">{item.text}</p>
+                                                        <p className="text-[#0257BF] text-[15px]">
+                                                            {item.text.split(" ").map((word, index, arr) => {
+                                                                const phrase3 = `${word} ${arr[index + 1]} ${arr[index + 2]}`;
+                                                                const phrase2 = `${word} ${arr[index + 1]}`;
+                                                                const phrase1 = word;
+                                                                if (boldwords.includes(phrase3)) {
+                                                                    return (
+                                                                        <b key={index} className="font-bold">
+                                                                            {phrase3}{' '}
+                                                                        </b>
+                                                                    );
+                                                                }
+                                                                if (boldwords.includes(phrase2)) {
+                                                                    return (
+                                                                        <b key={index} className="font-bold">
+                                                                            {phrase2}{' '}
+                                                                        </b>
+                                                                    );
+                                                                }
+                                                                if (boldwords.includes(phrase1)) {
+                                                                    return (
+                                                                        <b key={index} className="font-bold">
+                                                                            {phrase1}{' '}
+                                                                        </b>
+                                                                    );
+                                                                }
+                                                                return `${word} `;
+                                                            })}
+                                                        </p>
+
                                                     </div>
                                                 )}
                                             </Draggable>
@@ -164,14 +215,13 @@ const Test = () => {
                                 <Droppable key={key} droppableId={key} direction="vertical">
                                     {(provided) => (
                                         <div
-                                        id={key}
-                                        className={`rounded-lg py-5 px-3 mt-4 h-[430px] ${
-                                            fullfiled.includes(+key) ? 'bg-green-500' :
-                                            areAllCartsFull === false && carts[key].items.length < 4 ? 'bg-[#FF3AA4]' : 'bg-[#7C81FF]'
-                                        }`}
-                                        ref={provided.innerRef}
-                                        {...provided.droppableProps}
-                                    >
+                                            id={key}
+                                            className={`rounded-lg py-5   px-3 mt-4 h-[430px]  ${fullfiled.includes(+key) ? 'bg-green-500 h-auto' :
+                                                areAllCartsFull === false && carts[key].items.length < 4 ? 'bg-[#FF3AA4]' : 'bg-[#7C81FF]'
+                                                }`}
+                                            ref={provided.innerRef}
+                                            {...provided.droppableProps}
+                                        >
                                             <div className="flex items-center gap-1">
                                                 <div className="w-3/12">
                                                     <span className="text-white bg-[#003C67] w-11 h-11 rounded-full flex justify-center items-center font-bold text-xl">
@@ -185,12 +235,41 @@ const Test = () => {
                                                     <Draggable key={item.id} draggableId={item.id} index={i}>
                                                         {(provided) => (
                                                             <div
-                                                                className="bg-white rounded-lg py-2.5 px-5 mt-4"
+                                                                className="bg-white rounded-lg py-2.5 px-5 mt-3 h-[70px]"
                                                                 ref={provided.innerRef}
                                                                 {...provided.draggableProps}
                                                                 {...provided.dragHandleProps}
                                                             >
-                                                                <p className="text-[#0257BF]">{item.text}</p>
+                                                                <p className="text-[#0257BF] text-sm">
+                                                                    {item.text.split(" ").map((word, index, arr) => {
+                                                                        const phrase3 = `${word} ${arr[index + 1]} ${arr[index + 2]}`;
+                                                                        const phrase2 = `${word} ${arr[index + 1]}`;
+                                                                        const phrase1 = word;
+                                                                        if (boldwords.includes(phrase3)) {
+                                                                            return (
+                                                                                <b key={index} className="font-bold">
+                                                                                    {phrase3}{' '}
+                                                                                </b>
+                                                                            );
+                                                                        }
+                                                                        if (boldwords.includes(phrase2)) {
+                                                                            return (
+                                                                                <b key={index} className="font-bold">
+                                                                                    {phrase2}{' '}
+                                                                                </b>
+                                                                            );
+                                                                        }
+                                                                        if (boldwords.includes(phrase1)) {
+                                                                            return (
+                                                                                <b key={index} className="font-bold">
+                                                                                    {phrase1}{' '}
+                                                                                </b>
+                                                                            );
+                                                                        }
+                                                                        return `${word} `;
+                                                                    })}
+                                                                </p>
+
                                                             </div>
                                                         )}
                                                     </Draggable>

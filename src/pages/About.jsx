@@ -8,13 +8,13 @@ const About = () => {
                     <p className="font-bold text-[#CED8E3] text-2xl">İş dəyərləri aləti</p>
                     <h1 className="text-[#003C67] font-bold text-5xl mt-5">Alət haqqında məlumat</h1>
                     <p className="text-[#6F8193] text-[2rem] mt-5 max-w-4xl">
-                        <span className="text-[#32A9FF]">"İş dəyərləri vərəqi"</span>
+                        <span className="text-[#32A9FF] font-bold">"İş dəyərləri vərəqi" </span>
                         aləti O*NET plaftormasının məhsuludur və dünyanın bir çox ölkələrində istifadə olunur.</p>
                 </div>
                 <div className="w-full bg-[#F8F8F8] mt-14 rounded-2xl py-8 px-28">
-                    <div className="text-[#003C67] text-2xl leading-8 max-w-5xl">
-                        <p >
-                            <span className="font-bold">Alət</span>
+                    <div className="text-[#325E82] text-2xl leading-8 max-w-5xl">
+                        <p>
+                            <span className="font-bold">Alət </span>
                             istifadəçilərə öz karyera və peşə maraqlarını müəyyən etməyə kömək etmək üçün hazırlanmışdır.
                         </p>
                         <p className="mt-2.5">

@@ -19,7 +19,10 @@ const Education = () => {
         return education ? education : null;
     });
 
+    const [message, setMessage] = useState(null)
+
     const handleAnswerChange = (newAnswer) => {
+        setMessage(true)
         setAnswer(newAnswer);
         localStorage.setItem('education', newAnswer);
     };
@@ -29,16 +32,18 @@ const Education = () => {
     return (
         <div className='my-[86px]'>
             <ProgressBar i={3} color={color} />
-            <RadioOption text='Son aldığınız təhsil' list={education} answer={answer} setAnswer={handleAnswerChange} />
+            <RadioOption text='Son aldığınız təhsil' list={education} answer={answer} setAnswer={handleAnswerChange} message={message} />
             <div className='w-[500px] mx-auto flex gap-8'>
                 <Button send='/test' color='#6A7580' bgcolor='#F8F8F8'>
                     <IoArrowBack /> Geri
                 </Button>
-                <Button 
-                    send={answer !== null ? '/experience' : undefined} 
-                    color={answer !== null ? '#fff' : '#32A9FF'} 
-                    border={answer === null ? '#CED8E3' : undefined} 
+                <Button
+                    send={answer !== null ? '/experience' : undefined}
+                    color={answer !== null ? '#fff' : '#32A9FF'}
+                    border={answer === null ? '#CED8E3' : undefined}
                     bgcolor={answer !== null ? '#32A9FF' : 'transparent'}
+                    setMessage={setMessage}
+                    message={message}
                 >
                     Növbəti <HiArrowNarrowRight className='size-4' />
                 </Button>
